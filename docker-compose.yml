@@ -1,0 +1,42 @@
+version: '3'
+services:
+  postgres:
+    build: container/postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+  kerberos:
+    privileged: true
+    build: container/kerberos
+    hostname: kerberos
+
+  ambari:
+    privileged: true
+    build: container/ambari-server
+    hostname: ambari
+    depends_on:
+      - postgres
+      - kerberos
+    ports:
+      - '8080:8080'
+
+  host1:
+    privileged: true
+    build: container/ambari-agent
+    hostname: ambarisolrkerberized_host1_1.ambarisolrkerberizeddocker_default
+    depends_on:
+      - ambari
+
+  host2:
+    privileged: true
+    build: container/ambari-agent
+    hostname: ambarisolrkerberized_host2_1.ambarisolrkerberizeddocker_default
+    depends_on:
+      - ambari
+
+  host3:
+    privileged: true
+    build: container/ambari-agent
+    hostname: ambarisolrkerberized_host3_1.ambarisolrkerberizeddocker_default
+    depends_on:
+      - ambari

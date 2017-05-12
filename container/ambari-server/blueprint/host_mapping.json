@@ -1,0 +1,30 @@
+{
+  "blueprint": "solr_kerberized",
+  "default_password": "admin",
+  "host_groups": [
+    {
+      "name": "host1",
+      "hosts": [
+        {
+          "fqdn": "ambarisolrkerberized_host1_1.ambarisolrkerberizeddocker_default"
+        }
+      ]
+    },
+    {
+      "name": "host2",
+      "hosts": [
+        {
+          "fqdn": "ambarisolrkerberized_host2_1.ambarisolrkerberizeddocker_default"
+        }
+      ]
+    },
+    {
+      "name": "host3",
+      "hosts": [
+        {
+          "fqdn": "ambarisolrkerberized_host3_1.ambarisolrkerberizeddocker_default"
+        }
+      ]
+    }
+  ]
+}
